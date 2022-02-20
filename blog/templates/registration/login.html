@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+{%  block block-content %}
+
+{% if form.errors %}
+<h1> Your credentials do not match. Try again.</h1>
+{% endif %}
+<h5>**Contact your admin to get your account created.**</h5>
+<h6>or use</h6>
+<h5>Username: kopalkedia</h5>
+<h5>Password: 1234</h5>
+<form action="{% url 'login' %}" method="POST">
+
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" class= "btn btn-primary" value="Login">
+  <input type="hidden" value="{{next}}">
+
+</form>
+
+{% endblock %}
